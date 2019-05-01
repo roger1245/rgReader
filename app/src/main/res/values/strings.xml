@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RgReader</string>
+    <string name="title_user">我的</string>
+    <string name="title_video">视频</string>
+    <string name="title_articles">文章</string>
+    <string name="title_novel">小说</string>
 </resources>

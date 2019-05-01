@@ -11,18 +11,24 @@ import android.widget.TextView;
 
 import com.lj.ljimageloader.ImageLoader;
 import com.lj.rgreader.R;
-import com.lj.rgreader.activity.MainActivity;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.List;
-
 import com.lj.rgreader.base.Book;
+import com.lj.rgreader.module.NovelTabLayout;
+
+import java.net.URLDecoder;
+import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final static int TYPE_CONTENT = 0;
     private final static int TYPE_FOOTER = 1;
+    private boolean isFirstCreate = true;
+
+    public boolean isFirstCreate() {
+        return isFirstCreate;
+    }
+
+    public void setFirstCreate(boolean firstCreate) {
+        isFirstCreate = firstCreate;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -42,7 +48,8 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        if (i == TYPE_FOOTER) {
+        if (i == TYPE_FOOTER && !isFirstCreate) {
+
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.footer_item, viewGroup, false);
             return new FootViewHolder(view);
         } else {
@@ -55,7 +62,8 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     int position = holder.getAdapterPosition();
                     Book book = mBookList.get(position);
 
-                    MainActivity.startIntent(v.getContext(), book.getId());
+                    NovelTabLayout.startIntent(v.getContext(), book.getId());
+
                 }
             });
             return holder;
@@ -72,21 +80,23 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Log.d(TAG, book.getTitle());
             viewHolder.bookInform.setText(book.getShortInform());
 
-            String cover = book.getCover();
-            int begin = cover.indexOf("http");
-            int last = cover.indexOf(".jpg");
-            String url = cover.substring(begin, last + 4);
-            String decodedLink = null;
-            try {
-                decodedLink = URLDecoder.decode(url, "UTF-8");
-            }
-            catch (Exception e) {
-                /**
-                 * ignore
-                 */
-            }
-            Log.d(TAG, decodedLink);
-            ImageLoader.build(viewHolder.itemView.getContext()).bindBitmap(decodedLink, viewHolder.bookImage);
+            new Thread(() -> {
+                String cover = book.getCover();
+                int begin = cover.indexOf("http");
+                int last = cover.indexOf(".jpg");
+                String url = cover.substring(begin, last + 4);
+                String decodedLink = null;
+                try {
+                    decodedLink = URLDecoder.decode(url, "UTF-8");
+                }
+                catch (Exception e) {
+                    /**
+                     * ignore
+                     */
+                }
+                Log.d(TAG, decodedLink);
+                ImageLoader.build(viewHolder.itemView.getContext()).bindBitmap(decodedLink, viewHolder.bookImage);
+            }).start();
         }
     }
 

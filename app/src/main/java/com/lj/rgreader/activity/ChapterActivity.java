@@ -3,9 +3,9 @@ package com.lj.rgreader.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,26 +17,20 @@ import com.lj.rgreader.base.Chapter;
 import com.lj.rgreader.base.Content;
 import com.lj.rgreader.holder.ChapterHolder;
 import com.lj.rgreader.holder.ContentHolder;
-import com.lj.rgreader.kanshushenqi.ContentImpl;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ChapterActivity extends AppCompatActivity {
 
     public static final String TAG = "ChapterActivity";
-
     private List<Chapter> chapterList;
     private ChapterAdapter chapterAdapter;
     private String bookId;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private Chapter chapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +63,7 @@ public class ChapterActivity extends AppCompatActivity {
             Log.d(TAG, chapterList.get(0).getTitle());
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
@@ -93,42 +88,17 @@ public class ChapterActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
         }
     }
+
     public static void startIntent(Context context, String content) {
         Intent intent = new Intent(context, ContentActivity.class);
-        intent.putExtra("extra_data",content );
+        intent.putExtra("extra_data", content);
         context.startActivity(intent);
     }
 
-//    private String save(String inputTxt) {
-//        FileOutputStream out = null;
-//        BufferedWriter writer = null;
-//        String fileName = null;
-//        try {
-//            Date date = new Date();
-//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy_MM_dd_HH_mm_ss");
-//            String dateStr = simpleDateFormat.format(date);
-//            fileName = dateStr + ".txt";
-//            Log.d(TAG, fileName);
-//            out = openFileOutput(fileName, Context.MODE_PRIVATE);
-//            writer = new BufferedWriter(new OutputStreamWriter(out));
-//            writer.write(inputTxt);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                if (writer != null) {
-//                    writer.close();
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return fileName;
-//    }
-    public  void getContent(Chapter chapter) {
-            Log.d(TAG, chapter.getLink());
-            this.chapter = chapter;
-            new FetchContent().execute();
+    public void getContent(Chapter chapter) {
+        Log.d(TAG, chapter.getLink());
+        this.chapter = chapter;
+        new FetchContent().execute();
 
 
     }

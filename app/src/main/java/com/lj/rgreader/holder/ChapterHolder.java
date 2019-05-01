@@ -1,6 +1,8 @@
 package com.lj.rgreader.holder;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +15,7 @@ import com.lj.rgreader.kanshushenqi.ChapterImpl;
 import com.lj.rgreader.utils.HttpUtil;
 
 public class ChapterHolder {
+    private static final String TAG = "ChapterHolder";
     private static final String QUERY_SOURCE = "http://api.zhuishushenqi.com/atoc?view=summary&book=%s";
     private static final String QUERY_CHAPTER = "http://api.zhuishushenqi.com/atoc/%s?view=chapters";
 
@@ -51,7 +54,7 @@ public class ChapterHolder {
             for (int i = 1; i < sourceArray.length(); i++) {
                 JSONObject sourceObj = sourceArray.getJSONObject(i);
                 String sourceName = sourceObj.getString("name");
-                if (sourceName.equals("176小说")) {
+                if (sourceName.equals("xbiquge")) {
                     mSourceObj = sourceObj;
                     break;
                 }
@@ -65,6 +68,7 @@ public class ChapterHolder {
 //
     private void selectChapters() {
         String response = HttpUtil.sendHttpRequest(String.format(QUERY_CHAPTER, getId(mSourceObj)));
+        Log.d(TAG, response);
         parseResponseChapters(response);
     }
 
