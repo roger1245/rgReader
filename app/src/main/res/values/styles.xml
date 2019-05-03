@@ -12,13 +12,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#FFFFFF</item>
-        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabIndicatorColor">#000000</item>
+        <item name="tabIndicatorHeight">1dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
-        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextColor">@android:color/darker_gray</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
-        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="tabSelectedTextColor">@android:color/black</item>
     </style>
 
 </resources>

@@ -22,6 +22,7 @@ import com.lj.rgreader.adapter.BookAdapter;
 import com.lj.rgreader.base.Book;
 import com.lj.rgreader.callbackListener.OnLoadMoreListener;
 import com.lj.rgreader.holder.BookHolder;
+import com.lj.rgreader.module.video.VideoTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;

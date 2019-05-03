@@ -9,7 +9,7 @@ import com.lj.rgreader.R;
 import com.lj.rgreader.module.ArticlesTabLayout;
 import com.lj.rgreader.module.NovelTabLayout;
 import com.lj.rgreader.module.UserTabLayout;
-import com.lj.rgreader.module.VideoTabLayout;
+import com.lj.rgreader.module.video.VideoTabLayout;
 
 public class MainActivity extends AppCompatActivity {
     public final static String TAG = "MainActivity";
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void showFragment(int index) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         position = index;
+        hideFragment(ft);
         switch (index) {
             case FRAGMENT_NOVEL:
                 /**
@@ -102,6 +103,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ft.commit();
+    }
+    private void hideFragment(FragmentTransaction ft) {
+        if (novelTabLayout != null) {
+            ft.hide(novelTabLayout);
+        }
+        if (articlesTabLayout != null) {
+            ft.hide(articlesTabLayout);
+        }
+        if (videoTabLayout != null) {
+            ft.hide(videoTabLayout);
+        }
+        if (userTabLayout != null) {
+            ft.hide(userTabLayout);
+        }
     }
 
 
