@@ -28,6 +28,7 @@ public class BookHolder {
 
     public void query(String keyWords) {
         Log.d(TAG, "query success");
+        Log.d(TAG, String.format(QUERY_BOOK, keyWords));
         String response = HttpUtil.sendHttpRequest(String.format(QUERY_BOOK, keyWords));
         parseResponse(response);
     }

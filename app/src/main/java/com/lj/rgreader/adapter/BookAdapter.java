@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lj.ljimageloader.ImageLoader;
 import com.lj.rgreader.R;
 import com.lj.rgreader.base.Book;
@@ -79,24 +81,29 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             viewHolder.bookName.setText(book.getTitle());
             Log.d(TAG, book.getTitle());
             viewHolder.bookInform.setText(book.getShortInform());
+            String cover = book.getCover();
+            int begin = cover.indexOf("http");
+            int last = cover.indexOf(".jpg");
+            String url = cover.substring(begin, last + 4);
 
-            new Thread(() -> {
-                String cover = book.getCover();
-                int begin = cover.indexOf("http");
-                int last = cover.indexOf(".jpg");
-                String url = cover.substring(begin, last + 4);
-                String decodedLink = null;
-                try {
-                    decodedLink = URLDecoder.decode(url, "UTF-8");
-                }
-                catch (Exception e) {
-                    /**
-                     * ignore
-                     */
-                }
-                Log.d(TAG, decodedLink);
-                ImageLoader.build(viewHolder.itemView.getContext()).bindBitmap(decodedLink, viewHolder.bookImage);
-            }).start();
+            String decodedLink = null;
+            try {
+                decodedLink = URLDecoder.decode(url, "UTF-8");
+            }
+            catch (Exception e) {
+                /**
+                 * ignore
+                 */
+            }
+            Log.d(TAG, decodedLink);
+
+            Glide.with(viewHolder.itemView.getContext())
+                    .load(decodedLink)
+                    .placeholder(R.drawable.bili_loading)
+                    .into(viewHolder.bookImage);
+
+
+
         }
     }
 

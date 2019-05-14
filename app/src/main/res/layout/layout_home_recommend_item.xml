@@ -1,32 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardStyle"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/home_recommend_item_layout_height"
     app:cardCornerRadius="5dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
+            android:id="@+id/item_video_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/item_video_play_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_video_image_view"
+            android:layout_margin="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="title" />
+
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@id/item_video_play_title"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                app:srcCompat="@drawable/ic_img_play_number"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginRight="2dp"
                 android:tint="@color/White"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="2dp" />
+                app:srcCompat="@drawable/ic_img_play_number" />
+
             <TextView
-                android:id="@+id/play_number"
+                android:id="@+id/item_video_play_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="play number"
@@ -34,35 +52,27 @@
                 tools:textColor="@color/Black"
 
                 />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                app:srcCompat="@drawable/ic_img_danmaku_number"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginRight="2dp"
                 android:tint="@color/White"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="2dp" />
+                app:srcCompat="@drawable/ic_img_danmaku_number" />
+
             <TextView
-                android:id="@+id/comment_number"
+                android:id="@+id/item_video_comment_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="comment"
                 android:textColor="@color/White"
-                tools:textColor="@color/Black"
-                />
+                tools:textColor="@color/Black" />
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/play_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear"
-            android:text="title"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_margin="5dp"
-            />
+
 
     </RelativeLayout>
 

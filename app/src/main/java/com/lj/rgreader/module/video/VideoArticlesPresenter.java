@@ -30,6 +30,7 @@ public class VideoArticlesPresenter {
             public void onFinish(List<RecommendInfo.ResultBean> resultBeans) {
                 list = resultBeans;
                 videoArticlesView.onSetAdapter(list);
+                videoArticlesView.hideLoading();
             }
 
             @Override
@@ -65,5 +66,6 @@ public class VideoArticlesPresenter {
             subscription.dispose();
         }
     }
+
 
 }

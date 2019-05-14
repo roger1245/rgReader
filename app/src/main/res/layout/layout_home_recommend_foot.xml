@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/home_recommend_foot_layout_height"
+    android:paddingEnd="@dimen/default_general_margin"
+    android:paddingStart="@dimen/default_general_margin"
+    android:paddingTop="@dimen/default_general_margin">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="this is footer"
+        android:gravity="center"/>
+
+</LinearLayout>

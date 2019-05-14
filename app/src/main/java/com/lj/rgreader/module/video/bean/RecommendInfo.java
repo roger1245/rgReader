@@ -115,6 +115,26 @@ public class RecommendInfo {
             private String play;
             private String danmaku;
             private String up;
+
+            @Override
+            public String toString() {
+                return "BodyBean{" +
+                        "title='" + title + '\'' +
+                        ", style='" + style + '\'' +
+                        ", cover='" + cover + '\'' +
+                        ", param='" + param + '\'' +
+                        ", gotoX='" + gotoX + '\'' +
+                        ", width=" + width +
+                        ", height=" + height +
+                        ", play='" + play + '\'' +
+                        ", danmaku='" + danmaku + '\'' +
+                        ", up='" + up + '\'' +
+                        ", upFace='" + upFace + '\'' +
+                        ", online=" + online +
+                        ", desc1='" + desc1 + '\'' +
+                        '}';
+            }
+
             @SerializedName("up_face")
             private String upFace;
             private int online;
