@@ -1,4 +1,4 @@
-package com.lj.rgreader.widget.concreteSection;
+package com.lj.rgreader.widget.sectionRVAdapter;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lj.rgreader.R;
 import com.lj.rgreader.module.video.bean.RecommendInfo;
-import com.lj.rgreader.widget.SectionParameters;
-import com.lj.rgreader.widget.StatelessSection;
 
 import java.util.List;
 

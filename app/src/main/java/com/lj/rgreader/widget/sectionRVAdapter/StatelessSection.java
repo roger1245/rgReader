@@ -1,4 +1,4 @@
-package com.lj.rgreader.widget;
+package com.lj.rgreader.widget.sectionRVAdapter;
 
 
 import android.support.v7.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package com.lj.rgreader.widget;
+package com.lj.rgreader.widget.sectionRVAdapter;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lj.rgreader.widget.Section.State;
+import com.lj.rgreader.widget.sectionRVAdapter.Section.State;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import static com.lj.rgreader.widget.sectionRVAdapter.Section.State.LOADED;
 
 public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -904,11 +906,11 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             throw new IllegalStateException("No state changed");
         }
 
-        if (previousState == State.LOADED) {
+        if (previousState == LOADED) {
             throw new IllegalStateException("Use notifyStateChangedFromLoaded");
         }
 
-        if (state == State.LOADED) {
+        if (state == LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
         }
 
@@ -944,8 +946,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             throw new IllegalStateException("No state changed");
         }
 
-        if (state != State.LOADED) {
-            if (previousState == State.LOADED) {
+        if (state != LOADED) {
+            if (previousState == LOADED) {
                 throw new IllegalStateException("Use notifyStateChangedFromLoaded");
             } else {
                 throw new IllegalStateException("Use notifyNotLoadedStateChanged");
@@ -990,7 +992,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     public void notifyStateChangedFromLoaded(Section section, int previousContentItemsCount) {
         State state = section.getState();
 
-        if (state == State.LOADED) {
+        if (state == LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
         }
 

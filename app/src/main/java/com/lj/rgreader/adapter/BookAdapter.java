@@ -97,10 +97,14 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             Log.d(TAG, decodedLink);
 
-            Glide.with(viewHolder.itemView.getContext())
-                    .load(decodedLink)
-                    .placeholder(R.drawable.bili_loading)
-                    .into(viewHolder.bookImage);
+//            Glide.with(viewHolder.itemView.getContext())
+//                    .load(decodedLink)
+//                    .placeholder(R.drawable.bili_loading)
+//                    .into(viewHolder.bookImage);
+            ImageLoader.build(viewHolder.itemView.getContext())
+                    .place(R.drawable.bili_loading)
+                    .error(R.drawable.jiantou)
+                    .bindBitmap(decodedLink, viewHolder.bookImage);
 
 
 

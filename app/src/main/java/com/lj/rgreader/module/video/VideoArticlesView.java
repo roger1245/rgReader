@@ -7,17 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lj.rgreader.R;
 import com.lj.rgreader.module.video.bean.RecommendInfo;
-import com.lj.rgreader.widget.SectionedRecyclerViewAdapter;
-import com.lj.rgreader.widget.concreteSection.HomeRecommendedSection;
+import com.lj.rgreader.widget.sectionRVAdapter.HomeRecommendedSection;
+import com.lj.rgreader.widget.sectionRVAdapter.SectionedRecyclerViewAdapter;
 
 import java.util.List;
 
